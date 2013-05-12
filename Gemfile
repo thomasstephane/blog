@@ -15,7 +15,12 @@ gem 'activerecord'
 
 gem 'rake'
 
-gem 'shotgun'
+# gem 'shotgun'
+gem 'rerun'
+
+# sass support
+gem 'sass'
+
 
 group :test do
   gem 'faker'

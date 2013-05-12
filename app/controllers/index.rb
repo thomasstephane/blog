@@ -17,3 +17,10 @@ get '/posts' do
   @list = Post.all
   erb :posts
 end
+
+#sass support
+require 'sass'
+
+get '/css/application.css' do
+  scss :application
+end
