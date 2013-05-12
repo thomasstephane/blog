@@ -1,0 +1,27 @@
+<div>
+  <% if @success %>
+  <%= @success %>
+  <% end %>
+
+  <% if @post.errors.any? %>
+    <ul>
+      <% @post.errors.full_messages.each do |error| %>
+        <li><%= error %></li>
+      <% end %>
+    </ul>
+  <% end %>
+
+  <form action="/manage" method="post">
+    <input type="text" name="title" placeholder="Add a title">
+    <input type="text" name="content" placeholder="Add some content">
+    <input type="submit" value="Create post">
+  </form>
+  <ul>
+    <% @list.each do |post| %>
+      <li>
+        <%= post.title %>
+        <%= post.content %>
+      </li>
+      <% end %>
+  </ul>
+</div>

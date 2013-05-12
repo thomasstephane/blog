@@ -3,7 +3,7 @@ class CreatePostsTags < ActiveRecord::Migration
     create_table :posts_tag do |t|
       t.references :post, :tag
 
-      t.timestamps
+      t.timestamp
     end
   end
 end
