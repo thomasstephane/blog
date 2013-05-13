@@ -1,0 +1,53 @@
+@import '_variables';
+
+// Posts pages design
+
+.container {
+  position: absolute;
+  float:left;
+  min-height: 100%;
+  width: 100%;
+  top: 0;
+  bottom: 0;
+}
+
+.posts {
+  min-height: 100%;
+  width: 15%;
+  float: left;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  padding: 36px;
+  border-right: 1px solid $base-color;
+  ul {
+    list-style-type: none;
+    li{
+      text-align: left;
+    }
+  }
+}
+
+.new-post {
+  min-height: 100%;
+  float: left;
+  width: 70%;
+  padding: 36px;
+  bottom: 0;
+  .title {
+    font-size: 24px;
+    display: block;
+    text-align: left;
+    padding-bottom: 24px;
+    width: 60%;
+    border-bottom: 1px solid $base-color;
+  }
+  textarea[type="text"] {
+    display: block;
+    text-align: left;
+    min-height: 400px;
+    width: 60%;
+    padding-top: 24px;
+    border-top: 1px solid #fff;
+  }
+}
