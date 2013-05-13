@@ -24,3 +24,10 @@ require 'sass'
 get '/css/application.css' do
   scss :application
 end
+
+
+get '/posts/:id' do
+  @post = Post.find(params[:id])
+  redirect '/' unless @post
+  erb :show
+end
