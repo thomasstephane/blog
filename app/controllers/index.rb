@@ -4,7 +4,7 @@ get '/' do
 end
 
 post '/manage' do 
-  @post = Post.new(title: params[:title], content: params[:content])
+  @post = Post.new(title: params[:title], content: params[:content], published: params[:published])
   if @post.save
     redirect '/posts'
   else

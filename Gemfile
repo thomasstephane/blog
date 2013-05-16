@@ -20,6 +20,8 @@ gem 'rerun'
 
 # sass support
 gem 'sass'
+  gem 'faker'
+  gem 'rspec'
 
 
 group :test do

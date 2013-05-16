@@ -1,13 +1,13 @@
 <div class="container">
   <div class="posts">
     <ul>
-      <% @list.each do |post| %>
+      <% @list.reverse.each do |post| %>
         <li>
           <a href="/posts/<%= post.id %>">
             <%= post.title %>
           </a>
           <% if post.published %>
-            <%= "!" %>
+            <%= " - published" %>
           <% end %>
         </li>
         <% end %>
@@ -31,6 +31,8 @@
     <form action="/manage" method="post">
       <input type="text" name="title" placeholder="Add a title" class="title">
       <textarea type="text" name="content" placeholder="Add some content" class="content"></textarea>
+      <input type="button" value="unpublished">
+      <input type="button" value="published">
       <input type="submit" value="Create post">
     </form>
   </div>
