@@ -7,7 +7,7 @@
             <%= post.title %>
           </a>
           <% if post.published %>
-            <%= " - published" %>
+            <%= " - live!" %>
           <% end %>
         </li>
       <% end %>
@@ -28,8 +28,8 @@
       <input type="text" name="title" placeholder="Add a title" class="title">
       <textarea type="text" name="content" placeholder="Add some content" class="content"></textarea>
       <div class="published-status">
-        <p><input type="radio" name="published" value="draft"><span>Draft</span></p>
-        <p><input type="radio" name="published" value="live"><span>Live</span></p>
+        <p><input type="radio" name="published" value="false"><span>Draft</span></p>
+        <p><input type="radio" name="published" value="true"><span>Live</span></p>
         <div class="button">
           <input type="submit" value="Save">
         </div>

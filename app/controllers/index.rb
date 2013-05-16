@@ -1,7 +1,20 @@
+
+####### sass support ######
+require 'sass'
+
+get '/css/application.css' do
+  scss :application
+end
+
+
+###### Home ######
+
 get '/' do
   erb :index
 end
 
+
+###### Posts ######
 get '/posts' do
   @user = session[:id]
   if @user
@@ -15,6 +28,7 @@ get '/posts' do
 end
 
 post '/posts' do 
+  p params.inspect
   connected_id = session[:id]
   if connected_id
     @post = Post.new(title: params[:title], content: params[:content], published: params[:published], user_id: connected_id)
@@ -25,18 +39,12 @@ post '/posts' do
 end
 
 
+###### Blog ######
+
 get '/blog/:num' do |num|
-  @list = Post.order('updated_at DESC').limit(5).offset((num.to_i - 1) * 5)
+  @list = Post.where("published = true").order('updated_at DESC').limit(5).offset((num.to_i - 1) * 5)
   erb :blog
 end
-
-#sass support
-require 'sass'
-
-get '/css/application.css' do
-  scss :application
-end
-
 
 get '/posts/:id' do |id|
   @post = Post.find(id)
@@ -44,6 +52,8 @@ get '/posts/:id' do |id|
   erb :show
 end
 
+
+###### User #######
 get '/user' do
   erb :user
 end
