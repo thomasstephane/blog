@@ -3,11 +3,14 @@ get '/' do
 end
 
 post '/posts' do 
-  @post = Post.new(title: params[:title], content: params[:content], published: params[:published])
-  if @post.save
-    redirect '/posts'
-  else
-    erb :posts
+  connected_id = session[:id]
+  if connected_id
+    @post = Post.new(title: params[:title], content: params[:content], published: params[:published], user_id: connected_id)
+    if @post.save
+      redirect '/posts'
+    else
+      erb :posts
+    end
   end
 end
 
@@ -18,11 +21,12 @@ get '/posts' do
     @list = Post.all
     erb :posts
   else
-    redirect '/blog'
+    redirect '/blog/1'
   end
 end
 
-get '/blog' do 
+get '/blog/:num' do |num|
+  @list = Post.order('updated_at DESC').limit(5).offset((num.to_i - 1) * 5)
   erb :blog
 end
 
@@ -34,8 +38,8 @@ get '/css/application.css' do
 end
 
 
-get '/posts/:id' do
-  @post = Post.find(params[:id])
+get '/posts/:id' do |id|
+  @post = Post.find(id)
   redirect '/' unless @post
   erb :show
 end
@@ -56,6 +60,6 @@ post '/user' do
 end
 
 get '/logout' do 
-  session[:user] = nil
+  session[:id] = nil
   redirect to '/'
 end

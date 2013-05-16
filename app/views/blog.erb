@@ -1,0 +1,18 @@
+<div class="container">
+  <div class="blog">
+    <ul>
+      <% @list.reverse.each do |post| %>
+        <li>
+          <div class="title">
+            <%= post.title %>
+          </div>
+          <div class="content">
+            <%= post.content %>
+          </div>
+        </li>
+      <% end %>
+    </ul>
+  </div>
+  <a href="/blog/1">
+  Home</a>
+</div>
