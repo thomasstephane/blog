@@ -28,21 +28,19 @@
       <input type="text" name="title" placeholder="Add a title" class="title">
       <textarea type="text" name="content" placeholder="Add some content" class="content"></textarea>
       <div class="published-status">
-        <div class="selected">
-          <input type="radio" name="published" value="draft"><span>Draft</span>
-        </div>
-        <div class="non-selected">
-          <input type="radio" name="published" value="live"><span>Live</span>
-        </div>
-        <div class="save">
-          <input type="submit" value="Save" class="Save">
+        <p><input type="radio" name="published" value="draft"><span>Draft</span></p>
+        <p><input type="radio" name="published" value="live"><span>Live</span></p>
+        <div class="button">
+          <input type="submit" value="Save">
         </div>
       </div>
     </form>
-  </div>
-  <div id="menu">
-    <form action="/logout" method='get'>
-      <input type="submit" value="Logout">
-    </form>
-  </div>
+    <div class="logout">
+      <form action="/logout" method='get'>
+        <div class ="button">
+          <input type="submit" value="Logout">
+        </div>
+      </form>
+    </div>
+  </div>    
 </div>

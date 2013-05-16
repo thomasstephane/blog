@@ -1,7 +1,17 @@
 $(document).ready(function() {
-  // This is called after the document has loaded in its entirety
-  // This guarantees that any elements we bind to will exist on the page
-  // when we try to bind to them
+  $("div.published-status p").append('<a class="radio-select" href="#"></a><a class="radio-deselect" href="#"></a>');
 
-  // See: http://docs.jquery.com/Tutorials:Introducing_$(document).ready()
+  $('.published-status .radio-select').click(function(event) {
+    event.preventDefault();
+    var $boxes = $(this).parent().parent().children();
+    $boxes.removeClass('selected');
+    $(this).parent().addClass('selected');
+    $(this).parent().find(':radio').attr('checked','checked');
+  });
+
+  $('.published-status .radio-deselect').click(function(event){
+    event.preventDefault();
+    $(this).parent().removeClass('selected');
+    $(this).parent().find(':radio').removeAttr('checked');
+  });
 });

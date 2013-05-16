@@ -42,10 +42,10 @@
   bottom: 0;
   .title {
     font-size: 24px;
+    width: 60%;
     display: block;
     text-align: left;
     padding-bottom: 24px;
-    width: 60%;
     border-bottom: 1px solid $base-color;
   }
   textarea[type="text"] {
@@ -57,36 +57,16 @@
     padding-top: 24px;
     border-top: 1px solid #fff;
   }
+}
 
-
-  .published-status {
-    list-style: none;
-    margin: 0;
-    padding: 0;
-    div {
-      float: left;
-      margin: 12px;
-      padding: 12px;
-      width: 120px;
-      height: 24px;
-      position: relative;
-      @include border-top-right-rad ;
-      @include border-top-left-rad ;
-      @include border-bottom-right-rad ;
-      @include border-bottom-left-rad ;
-    }
-    .non-selected {
-      input { 
-        display: none; 
-      }
-    }
-    .selected{
-      border: 1px dotted $base-color;
-      input { 
-        display: none; 
-      }
-    }
-  }
+.logout {
+  display:inline-block;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  position: absolute;
+  bottom: 24px;
+  left: 25%;  
 }
 
 .errors {
