@@ -1,0 +1,17 @@
+#user {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  margin-top: -50px;
+  margin-left: -209px;
+  form {
+    input {
+      font-size: 20px;
+    }
+  }
+  .launch {
+    border-top: 1px solid $base-color;
+    margin-top: 24px;
+    padding-top: 24px;
+  }
+}

@@ -1,9 +1,8 @@
 get '/' do
-  # @success = params[:msg]
   erb :index
 end
 
-post '/manage' do 
+post '/posts' do 
   @post = Post.new(title: params[:title], content: params[:content], published: params[:published])
   if @post.save
     redirect '/posts'
@@ -13,9 +12,18 @@ post '/manage' do
 end
 
 get '/posts' do
-  @post = Post.new
-  @list = Post.all
-  erb :posts
+  @user = session[:id]
+  if @user
+    @post = Post.new
+    @list = Post.all
+    erb :posts
+  else
+    redirect '/blog'
+  end
+end
+
+get '/blog' do 
+  erb :blog
 end
 
 #sass support
@@ -30,4 +38,24 @@ get '/posts/:id' do
   @post = Post.find(params[:id])
   redirect '/' unless @post
   erb :show
+end
+
+get '/user' do
+  erb :user
+end
+
+post '/user' do 
+  name = params[:name]
+  password = params[:password]
+  if User.login(name, password)
+    session[:id] = User.find_by_name(name).id
+    redirect '/posts'
+  else
+    redirect '/user'
+  end
+end
+
+get '/logout' do 
+  session[:user] = nil
+  redirect to '/'
 end

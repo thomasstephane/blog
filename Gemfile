@@ -22,7 +22,7 @@ gem 'rerun'
 gem 'sass'
   gem 'faker'
   gem 'rspec'
-
+gem 'bcrypt-ruby'
 
 group :test do
   gem 'faker'
