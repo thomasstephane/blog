@@ -10,15 +10,11 @@
             <%= " - published" %>
           <% end %>
         </li>
-        <% end %>
+      <% end %>
     </ul>
   </div>
   <div class="errors">
-    <% if @success %>
-    <%= @success %>
-    <% end %>
-
-    <% if @post.errors.any? %>
+   <% if @post.errors.any? %>
       <ul>
         <% @post.errors.full_messages.each do |error| %>
           <li><%= error %></li>
