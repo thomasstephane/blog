@@ -4,10 +4,9 @@
       <% @list.reverse.each do |post| %>
         <li>
           <div class="title">
-            <%= post.title %>
-          </div>
-          <div class="content">
-            <%= post.content %>
+            <a href="/blog/show/<%= post.id %>">
+              <%= post.title %>
+            </a>
           </div>
         </li>
       <% end %>

@@ -25,8 +25,8 @@
   <div class="new-post">
 
     <form action="/posts" method="post">
-      <input type="text" name="title" placeholder="Add a title" class="title">
-      <textarea type="text" name="content" placeholder="Add some content" class="content"></textarea>
+      <input type="text" name="title" placeholder="Add a title" class="title" value =<%= @post.title %>>
+      <textarea type="text" name="content" placeholder="Add some content" class="content"><%= @post.content %></textarea>
       <div class="published-status">
         <p><input type="radio" name="published" value="false"><span>Draft</span></p>
         <p><input type="radio" name="published" value="true"><span>Live</span></p>

@@ -27,14 +27,31 @@ get '/posts' do
   end
 end
 
-post '/posts' do 
-  p params.inspect
+get '/posts/:id' do |id|
   connected_id = session[:id]
   if connected_id
-    @post = Post.new(title: params[:title], content: params[:content], published: params[:published], user_id: connected_id)
-    @post.save
+    @post = Post.find_by_id(id.to_i)
+    @errors = []
     @list = Post.all
     erb :posts
+  end
+end
+
+post '/posts' do 
+  connected_id = session[:id]
+  if connected_id
+    existing_post = Post.find_by_title(params[:title])
+    if existing_post
+      existing_post[:title] = params[:title]
+      existing_post[:content] = params[:content]
+      existing_post[:published] = params[:published]
+      existing_post.save
+    else
+      @post = Post.new(title: params[:title], content: params[:content], published: params[:published], user_id: connected_id)
+      @post.save
+      @list = Post.all
+    end
+    redirect '/posts'
   end
 end
 
@@ -46,7 +63,7 @@ get '/blog/:num' do |num|
   erb :blog
 end
 
-get '/posts/:id' do |id|
+get '/blog/show/:id' do |id|
   @post = Post.find(id)
   redirect '/' unless @post
   erb :show
