@@ -44,10 +44,6 @@ post '/posts' do
 
   if connected_id
     existing_post = Post.find_by_title(params[:title])
-
-    p existing_post
-    p params[:id]
-
     case
     when existing_post && existing_post.id == params[:id]
       Post.update(existing_post.id,title: params[:title], 

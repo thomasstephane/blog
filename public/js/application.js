@@ -46,8 +46,12 @@ $(document).ready(function() {
 
   $('.button:first-child').on('click', function() {
     $('.post-magic').toggle('slow');
-  });
 
+  });
+  $('.new-post').find('input[value="Save"]').on("click", function(event) { 
+    $('input[type="text"]').val(""); 
+    $('.content').val("");
+  });
 });
 
 
