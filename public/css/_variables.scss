@@ -32,4 +32,17 @@
   border-top-left-radius: 6px;
 }
 
+@mixin transition_0_8 {
+  transition        : all 0.8s ease;
+  -moz-transition   : all 0.8s ease; /* Firefox 4 */
+  -webkit-transition: all 0.8s ease; /* Safari and Chrome */
+  -o-transition     : all 0.8s ease; /* Opera */
+}
+
+@mixin transition_0_5_linear {
+  transition        : all 0.5s linear;
+  -moz-transition   : all 0.5s linear; /* Firefox 4 */
+  -webkit-transition: all 0.5s linear; /* Safari and Chrome */
+  -o-transition     : all 0.5s linear; /* Opera */
+}
 $base-color: #454545;

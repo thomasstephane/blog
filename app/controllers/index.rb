@@ -66,7 +66,8 @@ end
 ###### Blog ######
 
 get '/blog/:num' do |num|
-  @list = Post.where("published = true").order('updated_at DESC').limit(5).offset((num.to_i - 1) * 5)
+  @list = Post.where("published = true").order('updated_at DESC').limit(10).offset((num.to_i - 1) * 5)
+  @nb_post = Post.count(:conditions => "published = true") % 10
   erb :blog
 end
 

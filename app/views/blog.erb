@@ -1,17 +1,23 @@
-<div class="container">
-  <div class="blog">
+<div class="container_post">
+  <div class="header_blog"><h3><a href="/">Thoughts</a></h3>
+  </div><div class="blog">
     <ul>
       <% @list.reverse.each do |post| %>
         <li>
-          <div class="title">
+          <div class="title_blog">
             <a href="/blog/show/<%= post.id %>">
-              <%= post.title %>
+              <h6><%= post.title %></h6>
             </a>
           </div>
         </li>
       <% end %>
+      <li>
+        <div class="page">
+          <% 1.upto(@nb_post) do |page| %>
+            <p><a href="/blog/<%= page %>"><%= page %></a></p>
+          <% end %>
+        </div>
+      </li>
     </ul>
   </div>
-  <a href="/blog/1">
-  Home</a>
 </div>

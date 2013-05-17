@@ -1,10 +1,9 @@
-<div class="container">
-  <div class="title">
-    <%= @post.title %>
+<div class="container_post">
+  <div class="title_post">
+    <h4><%= @post.title %></h4>
+  <a href="/blog/1">Blog</a>
   </div>
-  <div class="content">
+  <div class="content_post">
     <%= markdown(@post.content) %>
   </div>
-  <a href="/blog/1">
-  Home</a>
 </div>

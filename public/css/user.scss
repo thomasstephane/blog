@@ -32,3 +32,34 @@
     color: red;
   }
 }
+
+
+.hidden_menu {
+  z-index: 100;
+  opacity: 0;
+  visibility: hidden;
+  position: fixed;
+  bottom: 36px;
+  right: 36px;
+  width: 60px;
+  height: 84px;
+  &:hover {
+    opacity: 1;
+    visibility: visible;
+  }
+  ul li{
+    opacity: 1;
+    visibility: visible;
+    list-style: none;
+    &:hover {
+      &:after {
+        content:" |";
+      }
+      &:before {
+        content:"| ";
+      }
+    }
+  }
+}
+
+

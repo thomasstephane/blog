@@ -1,7 +1,7 @@
 module ApplicationHelper
   def markdown(text)
-    options = [:hard_wrap, :autolink, :no_intraemphasis, :filter_html, :fenced_code, :gh_blockcode]
-    syntaxhighlighter(Redcarpet.bew(text, *options).to_html).html_safe
+    options = [ace_after_headers => true, :fenced_code_blocks => true, :no_intra_emphasis => true, :lax_html_blocks => true, :hard_wrap => true, :autolink => true, :fenced_code => true, :gh_blockcode => true]
+    syntaxhighlighter(Redcarpet.bew(text, *options).to_html)
   end
 
   def syntax_highlighter(html)
