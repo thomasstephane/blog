@@ -6,7 +6,7 @@ get '/css/application.css' do
   scss :application
 end
 
-['/posts', '/posts/:id'].each do |path|
+['/posts', '/posts/:id', 'delete/:id'].each do |path|
   before path do 
     redirect '/blog/1' unless session[:id]
   end
@@ -34,6 +34,11 @@ get '/posts/:id' do |id|
     erb :posts
 end
 
+post '/delete/:id' do |id|
+  Post.where(id: id).destroy_all
+  erb :posts
+end
+
 post '/posts' do 
   connected_id = session[:id]
 
@@ -49,6 +54,7 @@ post '/posts' do
         content: params[:content], published: params[:published])
       existing_post.save
       @post = Post.new
+      erb :posts
     when existing_post && existing_post.id != params[:id]
       @post = Post.new
       @list = Post.all
@@ -56,6 +62,7 @@ post '/posts' do
     else
       @post = Post.new(title: params[:title], content: params[:content], published: params[:published], user_id: connected_id)
       @post.save
+      erb :posts
     end
     @list = Post.all
     erb :posts
@@ -67,12 +74,12 @@ end
 
 get '/blog/:num' do |num|
   @list = Post.where("published = true").order('updated_at DESC').limit(10).offset((num.to_i - 1) * 5)
-  @nb_post = Post.count(:conditions => "published = true") % 10
+  p @nb_post = (Post.where("published = true").count) / 10 + 1
   erb :blog
 end
 
 get '/blog/show/:id' do |id|
-  @post = Post.find(id)
+  @post = Post.find_by_id_and_published(id, "true")
   redirect '/' unless @post
   erb :show
 end
