@@ -35,6 +35,12 @@
       list-style-type: none;
       li{
         text-align: left;
+        a.published {
+          color: #007207;
+        }
+        a {
+          color: #979797;
+        }
       }
     }
   }

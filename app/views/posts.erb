@@ -4,11 +4,14 @@
     <ul>
       <% @list.reverse.each do |post| %>
         <li>
+          <% if post.published %>
+          <a class="published" href="/posts/<%= post.id %>">
+            <%= post.title %>
+          </a>
+          <% else %>
           <a href="/posts/<%= post.id %>">
             <%= post.title %>
           </a>
-          <% if post.published %>
-            <%= " - live!" %>
           <% end %>
         </li>
       <% end %>
