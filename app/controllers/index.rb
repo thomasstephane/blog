@@ -54,7 +54,7 @@ post '/posts' do
         content: params[:content], published: params[:published])
       existing_post.save
       @post = Post.new
-      erb :posts
+      # erb :posts
     when existing_post && existing_post.id != params[:id]
       @post = Post.new
       @list = Post.all
@@ -62,7 +62,7 @@ post '/posts' do
     else
       @post = Post.new(title: params[:title], content: params[:content], published: params[:published], user_id: connected_id)
       @post.save
-      erb :posts
+      # erb :posts
     end
     @list = Post.all
     erb :posts
