@@ -3,7 +3,7 @@
     <%= @post.title %>
   </div>
   <div class="content">
-    <%= @post.content %>
+    <%= markdown(@post.content) %>
   </div>
   <a href="/blog/1">
   Home</a>

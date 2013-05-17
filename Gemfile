@@ -15,6 +15,11 @@ gem 'activerecord'
 
 gem 'rake'
 
+# gem for markdown
+gem 'redcarpet'
+gem 'albino'
+gem 'nokogiri'
+
 # gem 'shotgun'
 gem 'rerun'
 

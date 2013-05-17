@@ -26,7 +26,8 @@ h1 {
   font-size: 72px;
 }
 
-h2 {
+h2, 
+h2 a {
   font-size: 48px;
 }
 
@@ -67,7 +68,6 @@ h6 {
       display: inline-block;
       text-align: center;
       .bracket {
-        // position:relative;
         width: 103px;
         height: 18px;
         border-bottom: 1px solid $base-color;

@@ -6,6 +6,11 @@ get '/css/application.css' do
   scss :application
 end
 
+['/posts', '/posts/:id'].each do |path|
+  before path do 
+    redirect '/blog/1' unless session[:id]
+  end
+end
 
 ###### Home ######
 
@@ -16,42 +21,44 @@ end
 
 ###### Posts ######
 get '/posts' do
-  @user = session[:id]
-  if @user
-    @post = Post.new
-    @errors = []
-    @list = Post.all
-    erb :posts
-  else
-    redirect '/blog/1'
-  end
+  @post = Post.new
+  @errors = []
+  @list = Post.all
+  erb :posts 
 end
 
 get '/posts/:id' do |id|
-  connected_id = session[:id]
-  if connected_id
     @post = Post.find_by_id(id.to_i)
     @errors = []
     @list = Post.all
     erb :posts
-  end
 end
 
 post '/posts' do 
   connected_id = session[:id]
+
   if connected_id
     existing_post = Post.find_by_title(params[:title])
-    if existing_post
-      existing_post[:title] = params[:title]
-      existing_post[:content] = params[:content]
-      existing_post[:published] = params[:published]
+
+    p existing_post
+    p params[:id]
+
+    case
+    when existing_post && existing_post.id == params[:id]
+      Post.update(existing_post.id,title: params[:title], 
+        content: params[:content], published: params[:published])
       existing_post.save
+      @post = Post.new
+    when existing_post && existing_post.id != params[:id]
+      @post = Post.new
+      @list = Post.all
+      erb :posts
     else
       @post = Post.new(title: params[:title], content: params[:content], published: params[:published], user_id: connected_id)
       @post.save
-      @list = Post.all
     end
-    redirect '/posts'
+    @list = Post.all
+    erb :posts
   end
 end
 
@@ -76,13 +83,14 @@ get '/user' do
 end
 
 post '/user' do 
-  name = params[:name]
-  password = params[:password]
+  name, password = params[:name], params[:password]
   if User.login(name, password)
     session[:id] = User.find_by_name(name).id
     redirect '/posts'
   else
-    redirect '/user'
+    content_type :json
+    {errors: "Nice try but no..."}.to_json
+    # erb :user
   end
 end
 

@@ -14,4 +14,33 @@ $(document).ready(function() {
     $(this).parent().removeClass('selected');
     $(this).parent().find(':radio').removeAttr('checked');
   });
+
+
+// ZOOM
+
+
+  $('#user').find('input[name="password"]').change(function() {
+       if ($(this).val() === "")
+          $('.hidden-button').hide();
+       else
+          $('.hidden-button').slideDown("slow");
+    });
+  // .bind('keyup mouseup change', function() {
+      // $('.launch').slideDown("slow", function(){});
+  $('#user form').on('submit', function(event){
+    event.preventDefault();
+    $.ajax({
+      type: 'POST',
+      url: '/user',
+      data: $(this).serialize()}).done(function(response){
+        $('#errors-user span').text(response.errors);
+        $('.hidden-button').slideUp("slow");
+        $('#errors-user').slideDown("slow");
+        $('input[type="text"]').val("");
+        $('input[type="password"]').val("");
+      });
+    });
+
 });
+
+
