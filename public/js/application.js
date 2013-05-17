@@ -43,6 +43,11 @@ $(document).ready(function() {
         if (!response.errors) location.href = '/posts';
       });
     });
+
+  $('.button:first-child').on('click', function() {
+    $('.post-magic').toggle('slow');
+  });
+
 });
 
 

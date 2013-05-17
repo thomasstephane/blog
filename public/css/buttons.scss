@@ -67,6 +67,9 @@ div.button {
   input {
     line-height: 48px;
   }
+  button {
+    line-height: 48px;
+  }
   &:hover {
     @include border-top-right-rad ;
     @include border-top-left-rad ;

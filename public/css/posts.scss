@@ -11,19 +11,31 @@
   bottom: 0;
 }
 
+.button-posts {
+  display:inline-block;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  position: absolute;
+  bottom: 24px;
+  left: 62px;  
+}
+
 .posts {
   min-height: 100%;
-  width: 15%;
+  width: 228px;
   float: left;
   top: 0;
   bottom: 0;
   left: 0;
   padding: 36px;
-  border-right: 1px solid $base-color;
-  ul {
-    list-style-type: none;
-    li{
-      text-align: left;
+  .post-magic{
+    display: none;
+    ul {
+      list-style-type: none;
+      li{
+        text-align: left;
+      }
     }
   }
 }
