@@ -32,7 +32,9 @@ $(document).ready(function() {
     $.ajax({
       type: 'POST',
       url: '/user',
-      data: $(this).serialize()}).done(function(response){
+      data: $(this).serialize()
+    })
+    .done(function(response){
         $('#errors-user span').text(response.errors);
         $('.hidden-button').slideUp("slow");
         $('#errors-user').slideDown("slow");
