@@ -38,9 +38,9 @@ $(document).ready(function() {
         $('#errors-user').slideDown("slow");
         $('input[type="text"]').val("");
         $('input[type="password"]').val("");
+        if (!response.errors) location.href = '/posts';
       });
     });
-
 });
 
 
